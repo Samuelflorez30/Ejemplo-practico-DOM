@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Práctico del DOM</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .modificado { color: #2ea44f; font-weight: bold; }
+        button { padding: 10px 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1 id="tituloPrincipal">Manipulación del DOM</h1>
+    <p id="descripcion">Haz clic en el botón para modificar esta página.</p>
+    
+    <button id="btnAccion">Ejecutar Script</button>
+    
+    <ul id="listaElementos"></ul>
+
+    <script>
+        // 1. Seleccionar elementos del DOM
+        const titulo = document.getElementById('tituloPrincipal');
+        const boton = document.getElementById('btnAccion');
+        const lista = document.getElementById('listaElementos');
+        const descripcion = document.getElementById('descripcion');
+
+        // 2. Agregar un evento al botón
+        boton.addEventListener('click', function() {
+            // Modificar contenido y clases (Estilos)
+            titulo.textContent = '¡El DOM ha sido manipulado con éxito!';
+            descripcion.classList.add('modificado');
+            descripcion.textContent = 'Se han agregado nuevos elementos a la lista de abajo mediante JavaScript.';
+
+            // 3. Crear nuevos elementos y agregarlos al DOM
+            const nuevoItem = document.createElement('li');
+            nuevoItem.textContent = 'Nuevo nodo de texto creado: ' + new Date().toLocaleTimeString();
+            
+            // Agregar el nodo a la lista existente
+            lista.appendChild(nuevoItem);
+        });
+    </script>
+
+</body>
+</html>
